@@ -295,11 +295,11 @@ lws_ssl_capable_read_no_ssl(struct lws *wsi, unsigned char *buf, int len)
 #if defined(LWS_WITH_UDP)
 	if (lws_wsi_is_udp(wsi)) {
 		wsi->udp->salen = sizeof(wsi->udp->sa);
-		n = recvfrom(wsi->desc.sockfd, (char *)buf, len, 0,
+		n = (int) recvfrom(wsi->desc.sockfd, (char *)buf, len, 0,
 			     &wsi->udp->sa, &wsi->udp->salen);
 	} else
 #endif
-		n = recv(wsi->desc.sockfd, (char *)buf, len, 0);
+		n = (int) recv(wsi->desc.sockfd, (char *)buf, len, 0);
 
 	if (n >= 0) {
 
@@ -357,18 +357,18 @@ lws_ssl_capable_write_no_ssl(struct lws *wsi, unsigned char *buf, int len)
 			}
 		}
 		if (lws_has_buffered_out(wsi))
-			n = sendto(wsi->desc.sockfd, (const char *)buf,
+			n = (int) sendto(wsi->desc.sockfd, (const char *)buf,
 				   len, 0, &wsi->udp->sa_pending,
 				   wsi->udp->salen_pending);
 		else
-			n = sendto(wsi->desc.sockfd, (const char *)buf,
+			n = (int) sendto(wsi->desc.sockfd, (const char *)buf,
 				   len, 0, &wsi->udp->sa, wsi->udp->salen);
 	} else
 #endif
 		if (wsi->role_ops->file_handle)
-			n = write((int)(long long)wsi->desc.filefd, buf, len);
+			n = (int) write((int)(long long)wsi->desc.filefd, buf, len);
 		else
-			n = send(wsi->desc.sockfd, (char *)buf, len, MSG_NOSIGNAL);
+			n = (int) send(wsi->desc.sockfd, (char *)buf, len, MSG_NOSIGNAL);
 //	lwsl_info("%s: sent len %d result %d", __func__, len, n);
 
 #if defined(LWS_WITH_UDP)

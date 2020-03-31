@@ -47,7 +47,7 @@
 #include <sys/mman.h>
 #include <sys/un.h>
 #if defined(LWS_HAVE_EVENTFD)
-#include <sys/eventfd.h>
+#include <sys/event.h>
 #endif
 
 #if defined(__APPLE__)

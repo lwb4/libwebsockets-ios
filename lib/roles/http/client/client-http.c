@@ -166,7 +166,7 @@ lws_client_socket_service(struct lws *wsi, struct lws_pollfd *pollfd)
 			goto bail3;
 		}
 
-		n = recv(wsi->desc.sockfd, sb, context->pt_serv_buf_size, 0);
+		n = (int) recv(wsi->desc.sockfd, sb, context->pt_serv_buf_size, 0);
 		if (n < 0) {
 			if (LWS_ERRNO == LWS_EAGAIN) {
 				lwsl_debug("Proxy read EAGAIN... retrying\n");

@@ -54,7 +54,7 @@ lws_plat_pipe_signal(struct lws *wsi)
 	char buf = 0;
 	int n;
 
-	n = write(pt->dummy_pipe_fds[1], &buf, 1);
+	n = (int) write(pt->dummy_pipe_fds[1], &buf, 1);
 
 	return n != 1;
 #endif

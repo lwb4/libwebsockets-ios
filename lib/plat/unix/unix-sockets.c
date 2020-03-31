@@ -28,7 +28,7 @@
 #include "private-lib-core.h"
 
 #include <sys/ioctl.h>
-#include <net/route.h>
+/* #include <net/route.h> */
 #include <net/if.h>
 
 #include <pwd.h>

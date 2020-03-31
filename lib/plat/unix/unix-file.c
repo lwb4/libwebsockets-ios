@@ -53,7 +53,7 @@ lws_plat_write_file(const char *filename, void *buf, int len)
 	if (fd == -1)
 		return 1;
 
-	m = write(fd, buf, len);
+	m = (int) write(fd, buf, len);
 	close(fd);
 
 	return m != len;
@@ -66,7 +66,7 @@ lws_plat_read_file(const char *filename, void *buf, int len)
 	if (fd == -1)
 		return -1;
 
-	n = read(fd, buf, len);
+	n = (int) read(fd, buf, len);
 	close(fd);
 
 	return n;

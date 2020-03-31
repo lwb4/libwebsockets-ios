@@ -920,7 +920,7 @@ lwsws_get_config(void *user, const char *f, const char * const *paths,
 	lejp_construct(&ctx, cb, user, paths, count_paths);
 
 	do {
-		n = read(fd, buf, sizeof(buf));
+		n = (int) read(fd, buf, sizeof(buf));
 		if (!n)
 			break;
 

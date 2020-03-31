@@ -821,7 +821,7 @@ lws_find_string_in_file(const char *filename, const char *string, int stringlen)
 
 	while (1) {
 		if (pos == n) {
-			n = read(fd, buf, sizeof(buf));
+			n = (int) read(fd, buf, sizeof(buf));
 			if (n <= 0) {
 				if (match == stringlen)
 					hit = 1;

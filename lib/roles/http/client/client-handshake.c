@@ -127,7 +127,7 @@ lws_client_connect_4_established(struct lws *wsi, struct lws *wsi_piggyback,
 			goto failed;
 		wsi->c_port = wsi->vhost->http.http_proxy_port;
 
-		n = send(wsi->desc.sockfd, (char *)pt->serv_buf, (int)plen,
+		n = (int) send(wsi->desc.sockfd, (char *)pt->serv_buf, (int)plen,
 			 MSG_NOSIGNAL);
 		if (n < 0) {
 			lwsl_debug("ERROR writing to proxy socket\n");
