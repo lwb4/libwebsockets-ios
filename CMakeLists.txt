@@ -2478,27 +2478,27 @@ if ((LWS_ROLE_H1 OR LWS_ROLE_H2) AND NOT LWS_WITHOUT_TESTAPPS)
 		#
 		# test-server-extpoll
 		#
-		if (NOT LWS_WITHOUT_TEST_SERVER_EXTPOLL AND NOT WIN32)
-			create_test_app(test-server-extpoll
-				"test-apps/test-server.c"
-				""
-				""
-				""
-				""
-				"")
-			# Set defines for this executable only.
-			set_property(
-				TARGET test-server-extpoll
-				PROPERTY COMPILE_DEFINITIONS 
-					EXTERNAL_POLL 
-					INSTALL_DATADIR="${CMAKE_INSTALL_PREFIX}/share"
-				)
+		# if (NOT LWS_WITHOUT_TEST_SERVER_EXTPOLL AND NOT WIN32)
+		# 	create_test_app(test-server-extpoll
+		# 		"test-apps/test-server.c"
+		# 		""
+		# 		""
+		# 		""
+		# 		""
+		# 		"")
+		# 	# Set defines for this executable only.
+		# 	set_property(
+		# 		TARGET test-server-extpoll
+		# 		PROPERTY COMPILE_DEFINITIONS 
+		# 			EXTERNAL_POLL 
+		# 			INSTALL_DATADIR="${CMAKE_INSTALL_PREFIX}/share"
+		# 		)
 
-			# We need to link against winsock code.
-			if (WIN32)
-				target_link_libraries(test-server-extpoll ws2_32.lib)
-			endif(WIN32)
-		endif()
+		# 	# We need to link against winsock code.
+		# 	if (WIN32)
+		# 		target_link_libraries(test-server-extpoll ws2_32.lib)
+		# 	endif(WIN32)
+		# endif()
 
 		if (LWS_WITH_LEJP)
 			create_test_app(
@@ -2611,15 +2611,15 @@ if (LWS_ROLE_WS)
 			      "plugins/protocol_lws_status.c" "" "")
 		create_plugin(protocol_lws_table_dirlisting ""
 			      "plugins/generic-table/protocol_table_dirlisting.c" "" "")
-		if (NOT WIN32)
-			create_plugin(protocol_lws_raw_test ""
-			      "plugins/protocol_lws_raw_test.c" "" "")
+		# if (NOT WIN32)
+		# 	create_plugin(protocol_lws_raw_test ""
+		# 	      "plugins/protocol_lws_raw_test.c" "" "")
 
-		      if (UNIX AND LWS_HAVE_PTHREAD_H)
-				create_plugin(protocol_deaddrop ""
-				      "plugins/deaddrop/protocol_lws_deaddrop.c" "" "")
-			endif()
-		endif()
+		#       if (UNIX AND LWS_HAVE_PTHREAD_H)
+		# 		create_plugin(protocol_deaddrop ""
+		# 		      "plugins/deaddrop/protocol_lws_deaddrop.c" "" "")
+		# 	endif()
+		# endif()
 
 	if (LWS_WITH_SERVER_STATUS)
 			create_plugin(protocol_lws_server_status ""
@@ -2966,11 +2966,11 @@ if (LWS_WITH_PLUGINS)
 		DESTINATION share/libwebsockets-test-server/plugins
 		COMPONENT plugins)
 
-	if (NOT WIN32)
-		install(FILES plugins/deaddrop/assets/index.html;plugins/deaddrop/assets/deaddrop.js;plugins/deaddrop/assets/deaddrop.css;plugins/deaddrop/assets/drop.svg
-			DESTINATION share/libwebsockets-test-server/deaddrop
-			COMPONENT plugins)
-	endif()
+	# if (NOT WIN32)
+	# 	install(FILES plugins/deaddrop/assets/index.html;plugins/deaddrop/assets/deaddrop.js;plugins/deaddrop/assets/deaddrop.css;plugins/deaddrop/assets/drop.svg
+	# 		DESTINATION share/libwebsockets-test-server/deaddrop
+	# 		COMPONENT plugins)
+	# endif()
 
 
 if (LWS_WITH_SERVER_STATUS)
