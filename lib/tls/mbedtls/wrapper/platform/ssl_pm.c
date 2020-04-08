@@ -474,7 +474,7 @@ int ssl_pm_pending(const SSL *ssl)
 {
     struct ssl_pm *ssl_pm = (struct ssl_pm *)ssl->ssl_pm;
 
-    return mbedtls_ssl_get_bytes_avail(&ssl_pm->ssl);
+    return (int) mbedtls_ssl_get_bytes_avail(&ssl_pm->ssl);
 }
 
 void ssl_pm_set_fd(SSL *ssl, int fd, int mode)
@@ -867,7 +867,7 @@ void SSL_get0_alpn_selected(const SSL *ssl, const unsigned char **data,
 
 	*data = (const unsigned char *)alp;
 	if (alp)
-		*len = strlen(alp);
+		*len = (int) strlen(alp);
 	else
 		*len = 0;
 #endif

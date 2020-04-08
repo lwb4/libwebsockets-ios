@@ -359,7 +359,7 @@ lws_tls_extant(const char *name)
 		return 1;
 
 	/* and we can read at least one byte out of it */
-	n = read(fd, buf, 1);
+	n = (int) read(fd, buf, 1);
 	close(fd);
 
 	return n != 1;

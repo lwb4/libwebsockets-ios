@@ -184,7 +184,7 @@ lws_server_socket_service_ssl(struct lws *wsi, lws_sockfd_type accept_fd)
 
 		if (wsi->vhost->tls.allow_non_ssl_on_ssl_port && !wsi->skip_fallback) {
 
-			n = recv(wsi->desc.sockfd, (char *)pt->serv_buf,
+			n = (int) recv(wsi->desc.sockfd, (char *)pt->serv_buf,
 				 context->pt_serv_buf_size, MSG_PEEK);
 			/*
 			 * We have LWS_SERVER_OPTION_ALLOW_NON_SSL_ON_SSL_PORT..

@@ -80,7 +80,7 @@ lws_tls_mbedtls_get_x509_name(mbedtls_x509_name *name,
 
 		memcpy(&buf->ns.name[0], name->val.p, name->val.len);
 		buf->ns.name[name->val.len] = '\0';
-		buf->ns.len = name->val.len;
+		buf->ns.len = (int) name->val.len;
 
 		return 0;
 	}

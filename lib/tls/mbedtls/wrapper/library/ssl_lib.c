@@ -834,7 +834,7 @@ void SSL_CTX_set_default_read_buffer_len(SSL_CTX *ctx, size_t len)
 {
     SSL_ASSERT3(ctx);
 
-    ctx->read_buffer_len = len;
+    ctx->read_buffer_len = (int) len;
 }
 
 /**
@@ -845,7 +845,7 @@ void SSL_set_default_read_buffer_len(SSL *ssl, size_t len)
     SSL_ASSERT3(ssl);
     SSL_ASSERT3(len);
 
-    SSL_METHOD_CALL(set_bufflen, ssl, len);
+    SSL_METHOD_CALL(set_bufflen, ssl, (int) len);
 }
 
 /**
